@@ -130,11 +130,11 @@ A continuación se listan los 30 ejercicios. **Debe escribir el valor exacto de 
 | 05 | ¿Cuál es el apellido más frecuente y cuántas veces aparece? | `Reyes 7490 ` |
 | 06 | ¿Cuántos registros tienen la ciudad "Bogota" después de limpiar? | `14739` |
 | 07 | ¿Cuántos registros tienen la ciudad "Medellin" después de limpiar? | `14989` |
-| 08 | ¿Cuántas ciudades únicas existen después de normalizar? | `60` |
-| 09 | ¿Cuántos registros tienen la profesión "Ingeniero" después de limpiar? | `11721` |
-| 10 | ¿Cuántos registros tienen la profesión "Programador" después de limpiar? | `11688` |
-| 11 | ¿Cuántas profesiones únicas existen después de normalizar? | `69` |
-| 12 | ¿Cuántos registros tienen el campo `email` con espacios adicionales? | `27075` |
+| 08 | ¿Cuántas ciudades únicas existen después de normalizar? | `PENDIENTE` |
+| 09 | ¿Cuántos registros tienen la profesión "Ingeniero" después de limpiar? | `PENDIENTE` |
+| 10 | ¿Cuántos registros tienen la profesión "Programador" después de limpiar? | `PENDIENTE` |
+| 11 | ¿Cuántas profesiones únicas existen después de normalizar? | `PENDIENTE` |
+| 12 | ¿Cuántos registros tienen el campo `email` con espacios adicionales? | `PENDIENTE` |
 | 13 | ¿Cuántos registros tienen el campo `salario` con caracteres no numéricos? | `PENDIENTE` |
 | 14 | ¿Cuál es el salario promedio después de limpiar? | `PENDIENTE` |
 | 15 | ¿Cuál es el salario máximo después de limpiar? | `PENDIENTE` |
