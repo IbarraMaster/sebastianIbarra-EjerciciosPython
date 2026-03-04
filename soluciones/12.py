@@ -12,7 +12,7 @@ def solucionar():
     
     # Un email tiene espacios adicionales si es diferente a su versión con .strip()
     # .strip() elimina espacios, tabs (\t) y saltos de línea (\n) de los extremos
-    con_espacios = email_original[email_original != email_original.str.strip()]
+    con_espacios = email_original[email_original.str.contains(r'\s', na=False)]
     
     resultado = len(con_espacios)
     print(f"{resultado}")
