@@ -1,121 +1,51 @@
-# Taller de Python - Manejo y Limpieza de Datos
+# Taller de Procesamiento de Datos con Python - Universidad CESMAG
 
-## Infraestructura para Grandes Volúmenes de Datos
+Este repositorio contiene la solución al taller de 30 ejercicios de procesamiento y limpieza de datos sobre un dataset de 300,000 registros de ciudadanos.
 
----
+## 🛠️ Tecnologías Utilizadas
 
-## Instrucciones de Entrega
+* **Python 3.12+**
+* **Pandas:** Para la manipulación y análisis de datos.
+* **UV:** Gestor de paquetes y entornos de última generación (Astral).
+* **Git:** Control de versiones.
 
-**Fecha límite:** Jueves 5 de marzo, 11:59 PM
+## 🚀 Guía de Configuración y Ejecución
 
-### Paso 1: Fork del Repositorio
+Para garantizar que el proyecto funcione correctamente y de forma aislada, se recomienda el uso de **uv**.
 
-Debe hacer un **fork** de este repositorio a su cuenta de GitHub.
+### 1. Clonar el repositorio
 
-¿No sabes cómo hacer un fork? Mira este video tutorial: [Cómo hacer un Fork en GitHub](https://www.youtube.com/watch?v=3m7Z3g_U-Cs)
-
-### Paso 2: Completar las Soluciones
-
-Clone su fork y complete los 30 ejercicios en la carpeta `soluciones/`. Actualice el README con las respuestas correctas.
-
-### Paso 3: Pull Request
-
-Una vez completado, cree un **Pull Request (PR)** hacia el repositorio principal. 
-
-**Recursos útiles:**
-- [Guía de Pull Requests en GitHub](https://www.youtube.com/watch?v=Zqft6yNRuNs)
-
-**El PR debe incluir:**
-- Código de las 30 soluciones en `soluciones/`
-- README actualizado con todas las respuestas
-- Descripción clara de su trabajo
-- Cualquier mejora o documentación adicional que considere relevante
-
-### Importante
-
-⚠️ **Puede modificar cualquier archivo del repositorio EXCEPTO el archivo `data/personas.csv`**
-
-Siéntase libre de mejorar:
-- Documentación adicional
-- Scripts de verificación
-- Visualizaciones
-- Organización del código
-- Cualquier otra mejora que considere valiosa
-
----
-
-## Rúbrica de Calificación
-
-### Requisitos Mínimos (Aprobado)
-- ✅ Las 30 soluciones implementadas en `soluciones/`
-- ✅ Todas las respuestas verificadas y correctas
-- ✅ README actualizado con las respuestas
-- ✅ Código limpio y funcional
-
-### Puntaje Extra (Ganador del PR)
-
-**🏆 El Pull Request mejor presentado será aceptado y se convertirá en la versión oficial del taller.**
-
-**Beneficios del ganador:**
-- Su PR será merged al repositorio principal
-- Su trabajo se convertirá en la referencia oficial del taller
-- **+1.0 punto adicional en la calificación final**
-
-**Criterios de evaluación para el mejor PR:**
-- 📊 Calidad del código y organización
-- 📝 Claridad de la documentación
-- 🎨 Presentación profesional del repositorio
-- 💡 Mejoras o aportes adicionales al proyecto
-- ✨ Creatividad en la presentación de resultados
-
-**Nota:** Todas las soluciones serán verificadas automáticamente. Resultados incorrectos descalificarán automáticamente al participante.
-
----
-
-## Estructura del Repositorio
-
-El repositorio debe contener:
-
-```
-├── soluciones/
-│   ├── 01.py
-│   ├── 02.py
-│   ├── 03.py
-│   ├── ...
-│   └── 30.py
-├── data/
-│   └── personas.csv
-└── README.md  (con las soluciones)
+```bash
+git clone https://github.com/IbarraMaster/sebastianIbarra-EjerciciosPython.git
+cd sebastianIbarra-EjerciciosPython
 ```
 
-Cada archivo `.py` dentro de la carpeta `soluciones/` debe contener el código que resuelve el ejercicio correspondiente.
+### 2. Configurar el entorno virtual
 
----
+Sincroniza las dependencias y crea el entorno virtual automáticamente con:
 
-## Sobre el Dataset
-
-- **Archivo:** `data/personas.csv`
-- **Registros:** 300,000 filas
-- **Columnas:** `id`, `nombre_cifrado`, `apellido_cifrado`, `ciudad`, `profesion`, `email`, `fecha_nacimiento`, `salario`, `activo`
-
-### Datos sucios
-
-El dataset tiene intencionalmente datos sucios en el 30% de cada columna:
-- Espacios adicionales
-- Caracteres especiales (@, %, #)
-- Mayúsculas inconsistentes
-- Formatos variados
-
-### Descifrar nombres y apellidos
-
-Los campos `nombre_cifrado` y `apellido_cifrado` usan cifrado ROT13:
-
-```python
-import codecs
-nombre = codecs.decode(texto, 'rot_13')
+```bash
+uv sync
 ```
 
----
+### 3. Ejecutar los ejercicios
+
+No es necesario activar el entorno manualmente si usas `uv run`. Por ejemplo, para ver el resultado del ejercicio 17:
+
+```bash
+uv run soluciones/xx.py #en 'xx' reemplazar por el numero de ejercicio que se quiera ejecutar.
+```
+
+## 🧹 Lógica de Limpieza (Módulo Maestro)
+
+La inteligencia del proyecto reside en `soluciones/utils.py`, donde se centralizaron los procesos de limpieza para asegurar la integridad de los resultados:
+
+* **Nombres y Apellidos:** Descifrado mediante ROT13 y normalización a Title Case.
+* **Ciudades y Profesiones:** Limpieza de caracteres especiales y corrección de ~20 variantes ortográficas mediante diccionarios de mapeo (ej. `Mdllin` → `Medellin`).
+* **Emails:** Eliminación de espacios internos y corrección de formatos inválidos como `(usuario@mail.com)`, `<usuario@mail.com>` y `mailto:usuario@mail.com`.
+* **Salarios:** Corrección de errores tipográficos (`l` → `1`, `O` → `0`) y filtrado de datos corruptos (umbral de $15,000,000 verificado por gap estadístico en el dataset).
+* **Fechas:** Extracción de dígitos y estandarización al formato ISO 8601 (`YYYY-MM-DD`), soportando variantes con `.`, `/`, espacios internos y caracteres especiales.
+* **Booleano de Actividad:** Normalización de múltiples variantes (`1`, `si`, `active`, `true`, `yes`) a valores booleanos reales.
 
 ## Ejercicios y Soluciones
 
@@ -153,61 +83,3 @@ A continuación se listan los 30 ejercicios. **Debe escribir el valor exacto de 
 | 28 | ¿Cuál es la profesión con el salario promedio más alto? | `Administrador` |
 | 29 | ¿Cuántos registros tienen email con dominio "gmail.com"? | `60000` |
 | 30 | ¿Cuántos registros tienen nombre "Jose" y apellido "Garcia"? | `96` |
-
----
-
-## Ejemplo de Solución
-
-### Archivo `soluciones/02.py`
-
-```python
-import pandas as pd
-import codecs
-
-# Cargar datos
-df = pd.read_csv('data/personas.csv')
-
-# Descifrar nombres con ROT13
-df['nombre'] = df['nombre_cifrado'].apply(lambda x: codecs.decode(str(x), 'rot_13'))
-
-# Contar cuántas veces aparece "Maria"
-cantidad = df[df['nombre'] == 'Maria'].shape[0]
-
-print(f"El nombre 'Maria' aparece {cantidad} veces")
-```
-
-### En el README, la solución se vería así:
-
-| # | Ejercicio | Solución |
-|---|-----------|----------|
-| 02 | ¿Cuántas veces aparece el nombre "Maria" en el dataset? | `15234` |
-
-*(El número 15234 es solo un ejemplo, debe calcular el valor real)*
-
----
-
-## Comandos Útiles
-
-```bash
-# Ejecutar un script de solución
-uv run python soluciones/01.py
-
-# O si no usa uv
-python soluciones/01.py
-```
-
----
-
-## Dependencias
-
-El proyecto usa `pandas` y `matplotlib`. Si usa `uv`:
-
-```bash
-uv add pandas matplotlib
-```
-
-Si usa `pip`:
-
-```bash
-pip install pandas matplotlib
-```
